@@ -1,0 +1,264 @@
+/* =========================================================
+   ART PAGE — extends home.css
+   ========================================================= */
+
+.home .hero-art{
+  width: clamp(200px, 24vw, 340px);
+}
+
+/* ---- art desk intro (mirrors .lab-intro) ---- */
+.home .lab-intro{
+  text-align: center;
+  padding: 56px 0 60px;
+}
+.home .lab-intro .hi{
+  font-size: 1.9rem;
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+.home .lab-intro h1{
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--blue);
+  font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+  line-height: 1.3;
+  max-width: 920px;
+  margin: 0 auto;
+}
+.home .lab-intro h1 em{
+  font-style: italic;
+  color: var(--coral);
+}
+
+/* ---- digital art banner ---- */
+.home .digitalart-banner{
+  position: relative;
+  height: clamp(360px, 46vw, 560px);
+  overflow: hidden;
+}
+.home .digitalart-banner-img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+.home .digitalart-banner-overlay{
+  position: absolute;
+  inset: 0;
+  background: rgba(10,10,10,0.42);
+}
+.home .digitalart-banner-content{
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 14px;
+  padding: 0 24px;
+}
+.home .heading-digitalart{ width: clamp(360px, 46vw, 700px); }
+.home .digitalart-banner-content p{
+  font-family: var(--font-script);
+  color: var(--blue-fill);
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* ---- digital art gallery ---- */
+.home .digitalart-gallery{
+  background-image: url('assets/textures/grunge-dark.png');
+  background-size: 500px;
+  padding: 24px 6px 24px;
+}
+.home .gallery-grid{
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+  max-width: 1366px;
+  margin: 0 auto;
+}
+.home .gallery-item{
+  overflow: hidden;
+}
+.home .gallery-item img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.home .item-1{ grid-row: 1 / 3; grid-column: 1; }
+.home .item-2{ grid-row: 1; grid-column: 2; }
+.home .item-3{ grid-row: 2; grid-column: 2; }
+
+/* ---- studycat banner ---- */
+.home .studycat-banner{
+  position: relative;
+  height: clamp(340px, 40vw, 480px);
+  overflow: hidden;
+}
+.home .studycat-banner-img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+.home .studycat-banner-content{
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 16px;
+  padding: 0 24px;
+}
+.home .heading-studycat{ width: clamp(300px, 38vw, 540px); }
+.home .studycat-banner-content p{
+  font-family: var(--font-script);
+  color: var(--ink);
+  font-size: 1.25rem;
+  font-weight: 400;
+  max-width: 60ch;
+  margin: 0;
+}
+
+/* ---- checker wrap reused for studycat sprite section ---- */
+.home .art-checker::before{
+  top: 0;
+  background-size: 90px 90px;
+}
+.home .studycat-sprites{
+  padding: 60px 0 50px;
+  position: relative;
+}
+
+.home .cat-rows{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  margin-bottom: 50px;
+}
+.home .cat-row{
+  position: relative;
+  background: #F4BBA2;
+  border-radius: 22px;
+  padding: 18px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 20px;
+  width: 100%;
+  max-width: 900px;
+}
+.home .cat-row img{
+  height: 110px;
+  width: auto;
+}
+
+.home .flower-badge{
+  position: absolute;
+  top: 50%;
+  width: 168px;
+  height: 168px;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+.home .flower-badge img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.home .flower-badge.badge-right{ right: -84px; }
+.home .flower-badge.badge-left{ left: -84px; }
+.home .flower-badge span{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  font-family: var(--font-script);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.35;
+  padding: 0 20px;
+}
+
+.home .placeholder-block{
+  position: relative;
+  margin: 0 0 70px;
+}
+.home .placeholder-box{
+  background: #F4BBA2;
+  border: 2px solid rgba(122,105,99,0.35);
+  border-radius: 18px;
+  height: 340px;
+}
+.home .tag-label{
+  position: absolute;
+  top: -26px;
+  display: inline-flex;
+}
+.home .tag-label.tag-right{ right: 24px; }
+.home .tag-label.tag-left{ left: 24px; }
+.home .tag-label img{
+  height: 66px;
+  width: auto;
+  display: block;
+}
+.home .tag-label span{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 28px 0 20px;
+  color: #fff;
+  font-family: var(--font-script);
+  font-weight: 700;
+  font-size: 1.3rem;
+  white-space: nowrap;
+}
+
+.home .art-caption{
+  text-align: center;
+  font-size: 1.15rem;
+  margin: 0;
+  padding-bottom: 10px;
+  color: var(--ink);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 980px){
+  .home .gallery-grid{ grid-template-columns: 1fr; grid-template-rows: none; }
+  .home .item-1, .home .item-2, .home .item-3{ grid-row: auto; grid-column: auto; }
+  .home .item-1 img, .home .item-2 img, .home .item-3 img{ height: 320px; }
+  .home .cat-row{ max-width: 100%; padding: 16px 20px; }
+  .home .flower-badge{ width: 130px; height: 130px; }
+  .home .flower-badge.badge-right{ right: -40px; }
+  .home .flower-badge.badge-left{ left: -40px; }
+}
+
+@media (max-width: 720px){
+  .home .cat-row{ flex-wrap: wrap; justify-content: center; }
+  .home .cat-row img{ height: 80px; }
+  .home .flower-badge{ position: static; transform: none; margin: 16px auto 0; }
+  .home .flower-badge.badge-right, .home .flower-badge.badge-left{ left: auto; right: auto; }
+  .home .placeholder-box{ height: 220px; }
+  .home .tag-label span{ font-size: 1.05rem; }
+}

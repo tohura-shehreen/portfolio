@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Tohura Shehreen</title>
+<meta name="description" content="AI/ML research, full-stack apps, and a from-scratch 3D game — the lab notebook of Tohura Shehreen.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">Tohura<span class="dot">.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="art.html">Art</a></li>
+      <li><a href="design.html">Design</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn line small" href="assets/Tohura Shehreen Resume.pdf" target="_blank" rel="noopener">Résumé ↗</a>
+      <a class="btn berry small" href="mailto:shehreentohura@gmail.com">Say hi</a>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="page-hero tint-paper">
+    <div class="wrap">
+      <p class="crumbs"><a href="index.html">home</a> / projects</p>
+      <p class="eyebrow">the lab</p>
+      <h1>Projects</h1>
+      <p class="sub">Five projects, five different problems: translating a language almost no model has seen, cleaning bias out of citizen-science data, and building things people can actually click through. Each entry below has the stack, my role, and what shipped.</p>
+    </div>
+  </section>
+
+  <div class="wave" aria-hidden="true"><svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,40 C240,90 480,0 720,40 C960,80 1200,10 1440,50 L1440,100 L0,100 Z" class="wave-berry"></path></svg></div>
+
+  <section class="tint-berry" style="padding-top:56px;">
+    <div class="wrap">
+
+      <!-- ============ NMT CHAKMA-BANGLA ============ -->
+      <article class="project reveal">
+        <div class="project-top">
+          <div class="project-media">
+            <div class="placeholder-panel">
+              <div class="glyph">চ → বাং</div>
+              <p>Chakma → Bangla neural translation<br>(no interface screenshot — this project lives in notebooks &amp; eval scripts)</p>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="status ongoing">Group Thesis</span>
+            <h3>Neural Machine Translation for Chakma–Bangla</h3>
+            <p class="role">My role: model design &amp; training pipeline</p>
+            <p style="margin-top:14px; color:var(--ink-soft);">My undergraduate thesis: an exploration of low-resource techniques for translating Chakma — an Indigenous language of the Chittagong Hill Tracts with very little parallel data — into Bangla.</p>
+            <ul>
+              <li>Fine-tuned BanglaT5 using iterative back-translation to make the most of a tiny parallel corpus</li>
+              <li>Reached a BLEU score of 19.00 — a 30.4% improvement over baseline</li>
+              <li>Matched GPT-4.1's in-context learning performance and outperformed every prior fine-tuned system on this pair</li>
+            </ul>
+            <div class="project-stack">
+              <span class="chip">Python</span><span class="chip">PyTorch</span><span class="chip">HuggingFace</span><span class="chip">BanglaT5</span><span class="chip">sacrebleu</span>
+            </div>
+            <div class="project-links">
+              <a class="btn line small" href="https://github.com/tohura-shehreen/Neural-Machine-Translation-for-Chakma-to-Bangla" target="_blank" rel="noopener">View on GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-table-wrap">
+          <table class="spec">
+            <tr><th>Problem</th><td>Extreme low-resource machine translation — very few Chakma-Bangla sentence pairs exist for training.</td></tr>
+            <tr><th>Approach</th><td>Iterative back-translation on top of a BanglaT5 base model, cycling synthetic parallel data to bootstrap quality.</td></tr>
+            <tr><th>Result</th><td>BLEU 19.00, +30.4% over baseline; on par with GPT-4.1 in-context learning; best fine-tuned result to date on this language pair.</td></tr>
+            <tr><th>Status</th><td>Complete — submitted as undergraduate thesis, June 2026.</td></tr>
+          </table>
+        </div>
+      </article>
+
+      <!-- ============ EBIRD BIAS CORRECTION ============ -->
+      <article class="project reveal">
+        <div class="project-top">
+          <div class="project-media">
+            <div class="placeholder-panel">
+              <div class="glyph">🐦 → 📊</div>
+              <p>Bias-corrected species distribution modeling<br>(notebook-based project — no UI to screenshot)</p>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="status solo">Solo Project</span>
+            <h3>eBird Bias Correction (GNN + XGBoost)</h3>
+            <p class="role">My role: end-to-end — preprocessing through documentation</p>
+            <p style="margin-top:14px; color:var(--ink-soft);">Citizen-collected bird sighting data is famously biased: some areas get birdwatched constantly, others almost never. This pipeline models and corrects for that observation bias.</p>
+            <ul>
+              <li>Built a Graph Neural Network to capture spatial relationships between observation sites</li>
+              <li>Layered XGBoost on top for the final bias-corrected prediction</li>
+              <li>Owned the full pipeline: preprocessing, modeling, evaluation, and documentation</li>
+            </ul>
+            <div class="project-stack">
+              <span class="chip">Python</span><span class="chip">PyTorch Geometric</span><span class="chip">XGBoost</span><span class="chip">scikit-learn</span>
+            </div>
+            <div class="project-links">
+              <a class="btn line small" href="https://github.com/tohurashehreen/ebird-bias-correction-using-gnn-and-xgbooster" target="_blank" rel="noopener">View on GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-table-wrap">
+          <table class="spec">
+            <tr><th>Problem</th><td>Citizen-science observation data (eBird) is spatially biased by where people choose to birdwatch.</td></tr>
+            <tr><th>Approach</th><td>Graph Neural Network for spatial structure, feeding into an XGBoost model for the corrected prediction.</td></tr>
+            <tr><th>Result</th><td>A working correction pipeline, fully documented from raw data to evaluation.</td></tr>
+            <tr><th>Status</th><td>Complete.</td></tr>
+          </table>
+        </div>
+      </article>
+
+      <!-- ============ STUDYHIVE ============ -->
+      <article class="project reveal">
+        <div class="project-top">
+          <div class="project-media">
+            <div class="media-collage single">
+              <img src="assets/projects/studyhive.jpg" alt="StudyHive dashboard: a course library UI with a search bar, course cards for Learn Python and Flutter Basics, and a sidebar navigation.">
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="status group">Group Project</span>
+            <h3>StudyHive — a Learning Platform</h3>
+            <p class="role">My role: frontend lead + backend integration</p>
+            <p style="margin-top:14px; color:var(--ink-soft);">A YouTube-style resource-sharing hub built for students to upload, browse, and revisit course material in one place.</p>
+            <ul>
+              <li>Led the frontend: dashboard layout, course cards, and navigation</li>
+              <li>Integrated the Flask + MySQL backend that powers the resource library</li>
+              <li>Designed the browsing experience around recently-viewed and recommended courses</li>
+            </ul>
+            <div class="project-stack">
+              <span class="chip sky">Flask</span><span class="chip sky">MySQL</span><span class="chip sky">HTML/CSS</span><span class="chip sky">JavaScript</span>
+            </div>
+            <div class="project-links">
+              <a class="btn line small" href="https://github.com/tohura-shehreen/studyhive-a-learning-platform-main" target="_blank" rel="noopener">View on GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-table-wrap">
+          <table class="spec">
+            <tr><th>Problem</th><td>Course materials scattered across chats and drives, hard for students to browse or revisit.</td></tr>
+            <tr><th>Approach</th><td>A familiar, video-platform-style browsing pattern applied to course resources, backed by a relational database.</td></tr>
+            <tr><th>Result</th><td>A working dashboard with search, recent courses, and a resource-sharing hub.</td></tr>
+            <tr><th>Status</th><td>Complete — more interface screenshots coming soon.</td></tr>
+          </table>
+        </div>
+      </article>
+
+      <!-- ============ 3D MAZE ============ -->
+      <article class="project reveal">
+        <div class="project-top">
+          <div class="project-media">
+            <div class="media-collage three">
+              <img src="assets/projects/maze-game.jpg" alt="3D maze game screenshot rendered in a wireframe-style green maze, showing a game-over screen reading TIME'S UP, you didn't reach the exit in time.">
+              <div class="media-slot"><span class="plus">+</span><span>screenshot 2<br>coming soon</span></div>
+              <div class="media-slot"><span class="plus">+</span><span>screenshot 3<br>coming soon</span></div>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="status group">Group Project</span>
+            <h3>3D Maze Escape Game</h3>
+            <p class="role">My role: engine &amp; gameplay systems</p>
+            <p style="margin-top:14px; color:var(--ink-soft);">A real-time 3D maze game built from scratch — no game engine, just raw graphics programming.</p>
+            <ul>
+              <li>Built the render loop and maze geometry directly with PyOpenGL, GLUT, and GLU</li>
+              <li>Implemented first- and third-person camera modes</li>
+              <li>Added simple enemy AI, collision detection, and a countdown-timer win/lose state</li>
+            </ul>
+            <div class="project-stack">
+              <span class="chip">Python</span><span class="chip">PyOpenGL</span><span class="chip">GLUT</span><span class="chip">GLU</span>
+            </div>
+            <div class="project-links">
+              <a class="btn line small" href="https://github.com/tohura-shehreen/3D-Maze-Escape-Game" target="_blank" rel="noopener">View on GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-table-wrap">
+          <table class="spec">
+            <tr><th>Problem</th><td>Build a playable, timed 3D game with no engine — graphics, camera, AI, and collisions all from scratch.</td></tr>
+            <tr><th>Approach</th><td>Raw OpenGL rendering pipeline with GLUT/GLU for windowing and geometry helpers.</td></tr>
+            <tr><th>Result</th><td>A working maze with switchable cameras, moving enemies, and a real win/lose condition.</td></tr>
+            <tr><th>Status</th><td>Complete — more gameplay screenshots coming soon.</td></tr>
+          </table>
+        </div>
+      </article>
+
+      <!-- ============ STUDYCAT ============ -->
+      <article class="project reveal" style="margin-bottom:0;">
+        <div class="project-top">
+          <div class="project-media">
+            <div class="media-collage four">
+              <img src="assets/art/cat-orange-awake.gif" alt="Pixel art of an orange tabby cat reading, StudyCat's focus-timer companion, awake state.">
+              <img src="assets/art/cat-orange-sleepy.gif" alt="Pixel art of an orange tabby cat asleep, StudyCat's companion in its resting state.">
+              <img src="assets/art/cat-bw-awake.gif" alt="Pixel art of a black and white tuxedo cat reading, an alternate StudyCat companion skin, awake state.">
+              <img src="assets/art/cat-bw-sleepy.gif" alt="Pixel art of a black and white tuxedo cat asleep, an alternate StudyCat companion skin, resting state.">
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="status ongoing">Solo Project — Ongoing</span>
+            <h3>StudyCat — Full-Stack Web App</h3>
+            <p class="role">My role: everything — concept, art, code, deployment</p>
+            <p style="margin-top:14px; color:var(--ink-soft);">A productivity web app built around a focus timer and an animated pixel-pet that studies alongside you. Still in progress — the pixel art above is the companion itself, currently in two coat colors with awake/asleep states.</p>
+            <ul>
+              <li>Designed the entire UI in Figma before writing any code</li>
+              <li>Hand-drew the pixel-pet sprites and their outfit/room customization assets</li>
+              <li>Built the focus timer and session-stats tracking in React + Tailwind</li>
+              <li>Own the whole pipeline solo: concept → art → code → deployment on Vercel</li>
+            </ul>
+            <div class="project-stack">
+              <span class="chip berry">React</span><span class="chip berry">Tailwind CSS</span><span class="chip berry">Figma</span><span class="chip berry">Vercel</span>
+            </div>
+            <div class="project-links">
+              <span class="chip butter">🚧 in active development</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-table-wrap">
+          <table class="spec">
+            <tr><th>Problem</th><td>Studying alone is easy to abandon — most focus-timer apps have nothing to keep you accountable.</td></tr>
+            <tr><th>Approach</th><td>A pixel-art companion that reacts to your sessions, paired with a focus timer and stats tracking.</td></tr>
+            <tr><th>Result</th><td>Working focus timer, session stats, and an animated pixel-pet with two coat colors and customizable rooms/outfits.</td></tr>
+            <tr><th>Status</th><td>In progress — this is the project I'm actively building right now.</td></tr>
+          </table>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <div class="wave flip" aria-hidden="true"><svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,40 C240,90 480,0 720,40 C960,80 1200,10 1440,50 L1440,100 L0,100 Z" class="wave-paper"></path></svg></div>
+
+  <section class="tint-paper" style="padding-top:0;">
+    <div class="wrap">
+      <div class="note-card reveal">
+        <strong>A note on screenshots:</strong> real in-app screenshots for StudyHive and the 3D Maze Escape Game are on their way — this page will be updated with more gameplay and dashboard views as soon as they're ready.
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-brand">Let's talk.</p>
+        <p style="margin-top:8px; color:rgba(251,243,230,0.72); max-width:38ch;">Open to AI/ML and full-stack roles, and always happy to chat about any of the above.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="mailto:shehreentohura@gmail.com">shehreentohura@gmail.com</a></li>
+        <li><a href="tel:+8801741300606">+880 1741 300606</a></li>
+        <li><a href="https://github.com/tohura-shehreen" target="_blank" rel="noopener">GitHub ↗</a></li>
+        <li><a href="assets/Tohura_Shehreen_Resume.pdf" target="_blank" rel="noopener">Résumé ↗</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Tohura Shehreen</span>
+      <span>Dhaka, Bangladesh</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
