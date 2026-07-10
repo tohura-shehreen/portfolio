@@ -31,7 +31,7 @@
 </header>
 
 <section class="hero">
-  <img src="assets/img/hero-skyline.jpg" alt="New York City skyline on a clear day" class="hero-photo">
+  <img src="assets/img/hero-skyline-pixel.png" alt="New York City skyline on a clear day" class="hero-photo">
   <span class="hero-copyright">© 2026 Tohura Shehreen</span>
   <img src="assets/img/text-art.png" alt="Art!" class="hero-welcome hero-art">
   <div class="hero-icons">
@@ -72,13 +72,47 @@
   <!-- ============ DIGITAL ART GALLERY ============ -->
   <section class="digitalart-gallery">
     <div class="gallery-grid">
-      <div class="gallery-item item-1"><img src="assets/art/digital-art-1.png" alt="Digital painting of a couple crouching near a window, painted by Tohura Shehreen, signed atreenamis."></div>
-      <div class="gallery-item item-2"><img src="assets/art/digital-art-2.png" alt="Digital portrait painting of a girl with a purple flower in her hair."></div>
-      <div class="gallery-item item-3"><img src="assets/art/digital-art-3.jpg" alt="Digital portrait painting of a person lit in warm gold tones, wearing glittering jewelry."></div>
+      <div class="gallery-item" data-full="assets/art/digital-art-1.png" data-alt="Digital painting of a couple crouching near a window, painted by Tohura Shehreen, signed atreenamis.">
+        <button class="gallery-item-hit" aria-label="View artwork full size"></button>
+        <img src="assets/art/digital-art-1.png" alt="Digital painting of a couple crouching near a window, painted by Tohura Shehreen, signed atreenamis." draggable="false" oncontextmenu="return false">
+      </div>
+      <div class="gallery-item" data-full="assets/art/digital-art-2.png" data-alt="Digital portrait painting of a girl with a purple flower in her hair.">
+        <button class="gallery-item-hit" aria-label="View artwork full size"></button>
+        <img src="assets/art/digital-art-2.png" alt="Digital portrait painting of a girl with a purple flower in her hair." draggable="false" oncontextmenu="return false">
+      </div>
+      <div class="gallery-item" data-full="assets/art/digital-art-3.jpg" data-alt="Digital portrait painting of a person lit in warm gold tones, wearing glittering jewelry.">
+        <button class="gallery-item-hit" aria-label="View artwork full size"></button>
+        <img src="assets/art/digital-art-3.jpg" alt="Digital portrait painting of a person lit in warm gold tones, wearing glittering jewelry." draggable="false" oncontextmenu="return false">
+      </div>
+      <div class="gallery-item" data-full="assets/art/digital-art-4-pixel.jpg" data-alt="Purplish pixel art illustration of the New York City skyline at dusk.">
+        <button class="gallery-item-hit" aria-label="View artwork full size"></button>
+        <img src="assets/art/digital-art-4-pixel.jpg" alt="Purplish pixel art illustration of the New York City skyline at dusk." draggable="false" oncontextmenu="return false">
+      </div>
+      <div class="gallery-item" data-full="assets/art/digital-art-5-typing.gif" data-alt="Animated illustration of hands typing on a laptop with code on the screen.">
+        <button class="gallery-item-hit" aria-label="View artwork full size"></button>
+        <img src="assets/art/digital-art-5-typing.gif" alt="Animated illustration of hands typing on a laptop with code on the screen." draggable="false" oncontextmenu="return false">
+      </div>
+      <div class="gallery-item" data-full="assets/art/digital-art-6-cat-book.gif" data-alt="Pixel art of a black and white cat wearing a pink bow, reading an open book.">
+        <button class="gallery-item-hit" aria-label="View artwork full size"></button>
+        <img src="assets/art/digital-art-6-cat-book.gif" alt="Pixel art of a black and white cat wearing a pink bow, reading an open book." draggable="false" oncontextmenu="return false">
+      </div>
+      <div class="gallery-item" data-full="assets/art/digital-art-7-cat-sleepy.gif" data-alt="Pixel art of a sleepy orange tabby cat curled up with a pink bow, with Z's floating above.">
+        <button class="gallery-item-hit" aria-label="View artwork full size"></button>
+        <img src="assets/art/digital-art-7-cat-sleepy.gif" alt="Pixel art of a sleepy orange tabby cat curled up with a pink bow, with Z's floating above." draggable="false" oncontextmenu="return false">
+      </div>
     </div>
   </section>
 
-  <!-- ============ STUDYCAT BANNER ============ -->
+  <!-- ============ ARTWORK LIGHTBOX ============ -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-backdrop"></div>
+    <div class="lightbox-card">
+      <button class="lightbox-close" aria-label="Close">&times;</button>
+      <img id="lightboxImg" src="" alt="" draggable="false" oncontextmenu="return false">
+    </div>
+  </div>
+
+  <!-- ============ STUDYCAT SECTION (commented out per request) ============
   <section class="studycat-banner">
     <img src="assets/art/studycat-room-bg.png" alt="" class="studycat-banner-img" aria-hidden="true">
     <div class="studycat-banner-content">
@@ -87,7 +121,6 @@
     </div>
   </section>
 
-  <!-- ============ STUDYCAT SPRITES + PLACEHOLDERS ============ -->
   <div class="checker-wrap art-checker">
     <section class="studycat-sprites">
       <div class="wrap">
@@ -151,6 +184,7 @@
       </div>
     </section>
   </div>
+  -->
 
 </main>
 
@@ -191,15 +225,7 @@
   </div>
 </footer>
 
-<script>
-  const toggle = document.getElementById('menuToggle');
-  const links = document.getElementById('navLinks');
-  if (toggle && links) {
-    toggle.addEventListener('click', () => {
-      const open = links.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', String(open));
-    });
-  }
-</script>
+<script src="script.js"></script>
+<script src="gallery-lightbox.js"></script>
 </body>
 </html>

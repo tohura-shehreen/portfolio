@@ -59,4 +59,140 @@ document.addEventListener('DOMContentLoaded', () => {
       a.classList.add('active');
     }
   });
+
+  /* -----------------------------------------------------
+     CONTACT FALLBACK
+     mailto:/tel: links don't always have an app to hand
+     off to (no mail client on desktop, no SIM on a laptop,
+     etc). We try the native link first; if the tab is
+     still here a moment later, we show a small card with
+     the info and a "copy" button instead.
+  ----------------------------------------------------- */
+  const NAME = 'Tohura Shehreen';
+  const EMAIL = 'shehreentohura@gmail.com';
+  const PHONE_DISPLAY = '+880 1741 300606';
+
+  const mailtoLinks = document.querySelectorAll('a[href^="mailto:"]');
+  const telLinks = document.querySelectorAll('a[href^="tel:"]');
+
+  if (mailtoLinks.length || telLinks.length) {
+
+    const modal = document.createElement('div');
+    modal.className = 'contact-modal';
+    modal.setAttribute('aria-hidden', 'true');
+    modal.innerHTML =
+      '<div class="contact-modal-backdrop"></div>' +
+      '<div class="contact-modal-card" role="dialog" aria-modal="true" aria-label="Contact details">' +
+        '<button type="button" class="contact-modal-close" aria-label="Close">&times;</button>' +
+        '<p class="contact-modal-name">' + NAME + '</p>' +
+        '<p class="contact-modal-role">Reach out any time —</p>' +
+        '<p class="contact-modal-value"></p>' +
+        '<button type="button" class="contact-modal-copy">Copy</button>' +
+      '</div>';
+    document.body.appendChild(modal);
+
+    const valueEl = modal.querySelector('.contact-modal-value');
+    const copyBtn = modal.querySelector('.contact-modal-copy');
+    const closeBtn = modal.querySelector('.contact-modal-close');
+    const backdrop = modal.querySelector('.contact-modal-backdrop');
+    let copyText = '';
+
+    function openContactModal(text) {
+      copyText = text;
+      valueEl.textContent = text;
+      copyBtn.textContent = 'Copy';
+      copyBtn.classList.remove('copied');
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('lb-lock');
+    }
+    function closeContactModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('lb-lock');
+    }
+    closeBtn.addEventListener('click', closeContactModal);
+    backdrop.addEventListener('click', closeContactModal);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeContactModal();
+    });
+
+    let toastEl = null;
+    let toastTimer = null;
+    function showToast(msg) {
+      if (!toastEl) {
+        toastEl = document.createElement('div');
+        toastEl.className = 'copy-toast';
+        document.body.appendChild(toastEl);
+      }
+      toastEl.textContent = msg;
+      requestAnimationFrame(() => toastEl.classList.add('show'));
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2200);
+    }
+
+    copyBtn.addEventListener('click', () => {
+      if (!copyText) return;
+      const done = () => {
+        copyBtn.textContent = 'Copied!';
+        copyBtn.classList.add('copied');
+        showToast('Copied to clipboard!');
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(copyText).then(done).catch(() => fallbackCopy(copyText, done));
+      } else {
+        fallbackCopy(copyText, done);
+      }
+    });
+
+    function fallbackCopy(text, onDone) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        onDone();
+      } catch (e) {
+        showToast('Could not copy — please copy manually');
+      }
+      ta.remove();
+    }
+
+    // try the native app first; fall back to the modal if the
+    // tab never lost focus (i.e. nothing opened to handle it)
+    function tryNativeThenFallback(href, fallbackText) {
+      let handedOff = false;
+      function markHandedOff() { handedOff = true; cleanup(); }
+      function onVisibilityChange() { if (document.hidden) markHandedOff(); }
+      function cleanup() {
+        window.removeEventListener('blur', markHandedOff);
+        document.removeEventListener('visibilitychange', onVisibilityChange);
+      }
+      window.addEventListener('blur', markHandedOff);
+      document.addEventListener('visibilitychange', onVisibilityChange);
+
+      window.location.href = href;
+
+      setTimeout(() => {
+        cleanup();
+        if (!handedOff) openContactModal(fallbackText);
+      }, 600);
+    }
+
+    mailtoLinks.forEach((a) => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        tryNativeThenFallback(a.getAttribute('href'), EMAIL);
+      });
+    });
+    telLinks.forEach((a) => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        openContactModal(PHONE_DISPLAY);
+      });
+    });
+  }
 });

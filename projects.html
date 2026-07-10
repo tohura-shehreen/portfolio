@@ -31,7 +31,7 @@
 </header>
 
 <section class="hero">
-  <img src="assets/img/hero-skyline.jpg" alt="New York City skyline on a clear day" class="hero-photo">
+  <img src="assets/img/hero-skyline-pixel.png" alt="New York City skyline on a clear day" class="hero-photo">
   <span class="hero-copyright">© 2026 Tohura Shehreen</span>
   <img src="assets/img/text-projects.png" alt="Projects!" class="hero-welcome">
   <div class="hero-icons">
@@ -274,15 +274,6 @@
   </div>
 </footer>
 
-<script>
-  const toggle = document.getElementById('menuToggle');
-  const links = document.getElementById('navLinks');
-  if (toggle && links) {
-    toggle.addEventListener('click', () => {
-      const open = links.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', String(open));
-    });
-  }
-</script>
+<script src="script.js"></script>
 </body>
 </html>

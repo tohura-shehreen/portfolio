@@ -30,7 +30,7 @@
 </header>
 
 <section class="hero">
-  <img src="assets/img/hero-skyline.jpg" alt="New York City skyline on a clear day" class="hero-photo">
+  <img src="assets/img/hero-skyline-pixel.png" alt="New York City skyline on a clear day" class="hero-photo">
   <span class="hero-copyright">© 2026 Tohura Shehreen</span>
   <img src="assets/img/text-welcome.png" alt="Welcome!" class="hero-welcome">
   <div class="hero-icons">
@@ -117,6 +117,10 @@
         <a class="site-card" href="design.html">
           <h3>Design</h3>
           <p>Logo suites and social media template sets made in Canva for real and personal brand projects — Fitted, Bumble Stationery, foodsy, and more.</p>
+        </a>
+        <a class="site-card" href="experience.html">
+          <h3>Experience</h3>
+          <p>Hands-on roles I've taken on over the years — from running a small online shop to tutoring students, with what each one taught me.</p>
         </a>
       </div>
     </div>
@@ -229,15 +233,6 @@
   </div>
 </footer>
 
-<script>
-  const toggle = document.getElementById('menuToggle');
-  const links = document.getElementById('navLinks');
-  if (toggle && links) {
-    toggle.addEventListener('click', () => {
-      const open = links.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', String(open));
-    });
-  }
-</script>
+<script src="script.js"></script>
 </body>
 </html>
