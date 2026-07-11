@@ -213,6 +213,73 @@
   padding: 0 20px;
 }
 
+/* ---- "more to come" inline note inside a cat row ---- */
+.home .more-to-come{
+  font-family: var(--font-script);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1.3;
+  text-align: center;
+}
+
+/* ---- simple rectangle tag (states row) ---- */
+.home .tag-rect{
+  position: absolute;
+  top: 50%;
+  left: -70px;
+  transform: translateY(-50%);
+  z-index: 2;
+  background: #7A6963;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(122,105,99,0.3);
+  padding: 10px 16px;
+  width: 130px;
+}
+.home .tag-rect span{
+  display: block;
+  text-align: center;
+  color: #fff;
+  font-family: var(--font-script);
+  font-weight: 700;
+  font-size: 0.92rem;
+  line-height: 1.3;
+}
+
+/* ---- accessories group: two stacked rows sharing one badge ---- */
+.home .accessories-group{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.home .accessories-group .flower-badge.badge-spanning{
+  top: 50%;
+}
+.home .row-accessories{ justify-content: center; gap: 40px; padding: 18px 30px; }
+.home .accessory-img{ height: 90px; width: auto; }
+.home .accessory-img-bed{ height: 80px; }
+
+/* ---- backgrounds placeholder, now showing a real preview ---- */
+.home .placeholder-box.bg-populated{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 90px;
+  overflow: hidden;
+  padding: 20px;
+}
+.home .bg-preview-img{
+  height: 100%;
+  width: auto;
+  max-width: 60%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
 .home .placeholder-block{
   position: relative;
   margin: 0 0 70px;
@@ -266,6 +333,7 @@
   .home .flower-badge{ width: 130px; height: 130px; }
   .home .flower-badge.badge-right{ right: -40px; }
   .home .flower-badge.badge-left{ left: -40px; }
+  .home .bg-preview-img{ max-width: 50%; }
 }
 
 @media (max-width: 720px){
@@ -274,8 +342,13 @@
   .home .cat-row img{ height: 80px; }
   .home .flower-badge{ position: static; transform: none; margin: 16px auto 0; }
   .home .flower-badge.badge-right, .home .flower-badge.badge-left{ left: auto; right: auto; }
+  .home .tag-rect{ position: static; transform: none; margin: 0 auto 14px; }
   .home .placeholder-box{ height: 220px; }
   .home .tag-label span{ font-size: 1.05rem; }
+  .home .accessory-img{ height: 90px; }
+  .home .accessory-img-bed{ height: 80px; }
+  .home .placeholder-box.bg-populated{ flex-direction: column; padding: 16px; }
+  .home .bg-preview-img{ max-width: 100%; height: auto; width: 80%; }
 }
 
 /* ---------------------------------------------------------
