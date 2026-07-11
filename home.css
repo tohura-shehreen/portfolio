@@ -4,32 +4,37 @@
    Playfair Display (serif), Overpass (body/sans)
    ========================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Shantell+Sans:wght@300;400;500;700&family=Fredoka:wght@500;600;700&display=swap');
+/* Google Fonts (Overpass, Playfair Display, Shantell Sans, Fredoka) are now
+   loaded via <link rel="preload"/stylesheet"> tags in each page's <head>
+   instead of @import — @import blocks rendering until the imported
+   stylesheet is fetched, adding an extra network round trip before any
+   text can paint. Same fonts, same weights, just loaded sooner. */
 
 /* ---------------------------------------------------------
-   Local font files — drop your .ttf files into assets/fonts/
-   using these exact names (or edit the paths below to match
-   whatever you named them). TTF works natively in all
-   browsers, no conversion needed.
+   Local font files — served as woff2 (much smaller/faster to
+   parse) with the original .ttf as a fallback for very old
+   browsers that don't support woff2.
 ---------------------------------------------------------- */
 @font-face{
   font-family: 'More Sugar';
-  src: url('assets/fonts/MoreSugar-Regular.ttf') format('truetype');
+  src: url('assets/fonts/MoreSugar-Regular.woff2') format('woff2'),
+       url('assets/fonts/MoreSugar-Regular.ttf') format('truetype');
   font-weight: 400;
   font-display: swap;
 }
 @font-face{
   font-family: 'More Sugar';
-  src: url('assets/fonts/MoreSugar-Thin.ttf') format('truetype');
+  src: url('assets/fonts/MoreSugar-Thin.woff2') format('woff2'),
+       url('assets/fonts/MoreSugar-Thin.ttf') format('truetype');
   font-weight: 300;
   font-display: swap;
 }
-@font-face{
-  font-family: 'Playful Display';
-  src: url('assets/fonts/PlayfulDisplay-Regular.ttf') format('truetype');
-  font-weight: 600;
-  font-display: swap;
-}
+/* Note: the 'Playful Display' @font-face that used to be here pointed at
+   assets/fonts/PlayfulDisplay-Regular.ttf, a file that was never actually
+   in the project — every page load was silently failing that request.
+   The font-stack (--font-display below) already falls through to Fredoka
+   in that case, so this is exactly what was rendering before; removing
+   the dead @font-face just stops the wasted failed request. */
 
 :root{
   /* colors sampled directly from the mockup */
