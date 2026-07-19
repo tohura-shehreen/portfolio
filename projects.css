@@ -49,11 +49,11 @@
   background-image: url('assets/textures/paper.jpg');
   background-size: 500px;
   border-radius: 16px;
-  padding: 40px 44px 44px 300px;
+  padding: 40px 44px 44px 370px;
   box-shadow: 0 10px 26px rgba(122,105,99,0.14);
 }
 .home .project-band.blue .project-card{
-  padding: 40px 340px 44px 44px;
+  padding: 40px 370px 44px 44px;
 }
 
 .home .paperclip{
@@ -177,8 +177,8 @@
 /* ---- pinned screenshot photo (sits in the reserved image column) ---- */
 .home .proj-photo-pin{
   position: absolute;
-  top: 130px;
-  width: 280px;
+  top: 120px;
+  width: 300px;
   padding: 10px 10px 34px;
   background: var(--white);
   border-radius: 4px;
@@ -190,8 +190,8 @@
   z-index: 1;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.home .project-band.blue .proj-photo-pin{ right: 44px; transform: rotate(5deg); }
-.home .project-band.peach .proj-photo-pin{ left: 44px; transform: rotate(-6deg); }
+.home .project-band.blue .proj-photo-pin{ right: 40px; transform: rotate(5deg); }
+.home .project-band.peach .proj-photo-pin{ left: 40px; transform: rotate(-6deg); }
 .home .proj-photo-pin:hover,
 .home .proj-photo-pin:focus-visible{
   transform: rotate(0deg) scale(1.04);
@@ -302,6 +302,28 @@
 .proj-lightbox-footer{
   display: flex;
   justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* =========================================================
+   LAYOUT OVERRIDES — lets image side stay fixed even if the
+   band background color is swapped independently
+   ========================================================= */
+.home .project-card.force-img-right{
+  padding: 40px 370px 44px 44px !important;
+}
+.home .project-card.force-text-right{
+  padding: 40px 44px 44px 370px !important;
+}
+.home .project-card.force-img-right .proj-photo-pin{
+  left: auto !important;
+  right: 40px !important;
+  transform: rotate(5deg) !important;
+}
+.home .project-card.force-img-right .proj-photo-pin:hover,
+.home .project-card.force-img-right .proj-photo-pin:focus-visible{
+  transform: rotate(0deg) scale(1.04) !important;
 }
 
 /* =========================================================

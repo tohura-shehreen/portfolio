@@ -201,6 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (lightbox) {
     const scroller = document.getElementById('projLightboxScroller');
     const liveBtn = document.getElementById('projLightboxLive');
+    const githubBtn = document.getElementById('projLightboxGithub');
     const pins = document.querySelectorAll('.proj-photo-pin');
     let lastFocused = null;
 
@@ -221,6 +222,14 @@ document.addEventListener('DOMContentLoaded', () => {
         liveBtn.style.display = '';
       } else {
         liveBtn.style.display = 'none';
+      }
+
+      const githubUrl = pin.dataset.github;
+      if (githubUrl) {
+        githubBtn.href = githubUrl;
+        githubBtn.style.display = '';
+      } else {
+        githubBtn.style.display = 'none';
       }
 
       lastFocused = document.activeElement;
