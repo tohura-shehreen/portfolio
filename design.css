@@ -1,0 +1,261 @@
+/* =========================================================
+   DESIGN PAGE — extends home.css
+   ========================================================= */
+
+.home .hero-design{
+  width: clamp(300px, 42vw, 620px);
+}
+
+/* ---------------------------------------------------------
+   INTRO — "The visual archive"
+---------------------------------------------------------- */
+.home .archive-intro{
+  text-align: center;
+  padding: 60px 0 64px;
+}
+.home .archive-intro .eyebrow{
+  font-family: var(--font-script);
+  color: var(--coral);
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0 0 10px;
+}
+.home .archive-intro h1{
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--blue);
+  font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+  line-height: 1.35;
+  max-width: 780px;
+  margin: 0 auto;
+}
+.home .archive-intro h1 em{
+  font-style: italic;
+  color: var(--coral);
+}
+
+/* ---------------------------------------------------------
+   SHARED CHECKERED WRAP for templates + logos
+---------------------------------------------------------- */
+.home .design-checker{
+  position: relative;
+  overflow: hidden;
+  background: var(--footer-peach);
+  padding: 54px 0 70px;
+}
+.home .design-checker::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('assets/textures/checkered-peach.png');
+  background-repeat: repeat;
+  background-size: 100px 100px;
+  z-index: 0;
+}
+.home .design-checker .wrap{ position: relative; z-index: 1; }
+
+.home .design-section-head{
+  margin-bottom: 26px;
+}
+.home .design-section-head img{
+  width: clamp(260px, 30vw, 400px);
+  display: block;
+}
+.home .design-section-head.right{
+  text-align: right;
+}
+.home .design-section-head.right img{
+  margin-left: auto;
+}
+.home .design-section-head + .carousel{ margin-top: 8px; }
+.home .design-block + .design-block{ margin-top: 56px; }
+
+/* ---------------------------------------------------------
+   CAROUSEL — shared behaviour for templates + logos
+---------------------------------------------------------- */
+.home .carousel{
+  position: relative;
+}
+.home .car-track{
+  display: flex;
+  align-items: stretch;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 22px 0;
+  margin: -22px 0;
+  cursor: grab;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.home .car-track::-webkit-scrollbar{ display: none; }
+.home .car-track.dragging{ cursor: grabbing; scroll-behavior: auto; }
+
+.home .car-item{
+  position: relative;
+  flex: 0 0 auto;
+  overflow: hidden;
+  z-index: 1;
+  transition: z-index 0s;
+}
+.home .car-item img{
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 0.35s var(--ease, ease-out);
+  will-change: transform;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+.home .car-item:hover{ z-index: 5; }
+.home .car-item:hover img{ transform: scale(1.1); }
+.home .car-item button.car-item-hit{
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+/* templates: photo cards, subtle rounding + gap */
+.home .templates-track .car-item{
+  height: clamp(220px, 26vw, 340px);
+  aspect-ratio: 1400 / 942;
+  width: auto;
+  border-radius: 10px;
+  margin-right: 6px;
+  box-shadow: 0 4px 14px rgba(122,105,99,0.18);
+}
+
+/* logos: equal square cards, touching edge to edge */
+.home .logos-track .car-item{
+  height: clamp(220px, 22vw, 300px);
+  width: clamp(220px, 22vw, 300px);
+}
+
+/* edge fades — colour-matched per section via CSS var, not a static image */
+.home .carousel::before,
+.home .carousel::after{
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  width: clamp(30px, 6vw, 90px);
+  z-index: 4;
+  pointer-events: none;
+}
+.home .carousel::before{
+  left: 0;
+  background: linear-gradient(to right, var(--fade-color, var(--page-bg)), transparent);
+}
+.home .carousel::after{
+  right: 0;
+  background: linear-gradient(to left, var(--fade-color, var(--page-bg)), transparent);
+}
+.home .design-checker .carousel{ --fade-color: var(--footer-peach); }
+
+/* prev / next round arrow buttons */
+.home .car-btn{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(38px, 4.4vw, 52px);
+  height: clamp(38px, 4.4vw, 52px);
+  border: 0;
+  padding: 0;
+  z-index: 6;
+  cursor: pointer;
+  background: url('assets/img/arrow-next.png') center / contain no-repeat;
+  filter: drop-shadow(0 4px 10px rgba(122,105,99,0.35));
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.home .car-btn:hover{ filter: drop-shadow(0 4px 10px rgba(122,105,99,0.5)) brightness(1.04); }
+.home .car-btn.prev{ left: clamp(-8px, -1vw, 6px); transform: translateY(-50%) scaleX(-1); }
+.home .car-btn.prev:hover{ transform: translateY(-50%) scaleX(-1) scale(1.06); }
+.home .car-btn.next{ right: clamp(-8px, -1vw, 6px); }
+.home .car-btn.next:hover{ transform: translateY(-50%) scale(1.06); }
+
+/* ---------------------------------------------------------
+   LIGHTBOX
+---------------------------------------------------------- */
+.lightbox{
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+.lightbox.open{ display: flex; }
+.lightbox-backdrop{
+  position: absolute;
+  inset: 0;
+  background: rgba(46, 38, 34, 0.58);
+  backdrop-filter: blur(2px);
+}
+.lightbox-card{
+  position: relative;
+  z-index: 1;
+  max-width: min(880px, 92vw);
+  max-height: 88vh;
+  background-image: url('assets/textures/paper.jpg');
+  background-size: 600px;
+  border-radius: 22px;
+  padding: 26px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+  animation: lightbox-pop 0.22s ease;
+  display: flex;
+}
+.lightbox-card img{
+  display: block;
+  max-width: 100%;
+  max-height: 78vh;
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(122,105,99,0.25);
+}
+.lightbox-close{
+  position: absolute;
+  top: -16px; right: -16px;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 0;
+  background: var(--coral);
+  color: #fff;
+  font-size: 1.3rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(122,105,99,0.35);
+  transition: transform 0.2s ease;
+}
+.lightbox-close:hover{ transform: scale(1.08); }
+
+@keyframes lightbox-pop{
+  from{ opacity: 0; transform: scale(0.92); }
+  to{ opacity: 1; transform: scale(1); }
+}
+
+body.lb-lock{ overflow: hidden; }
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 720px){
+  .home .design-checker{ padding: 40px 0 52px; }
+  .home .design-section-head.right{ text-align: left; }
+  .home .design-section-head.right img{ margin-left: 0; }
+  .home .car-btn{ display: none; }
+  .home .carousel::before, .home .carousel::after{ width: 24px; }
+  .home .lightbox-close{ top: -12px; right: -12px; }
+}

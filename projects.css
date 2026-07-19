@@ -1,0 +1,336 @@
+/* =========================================================
+   PROJECTS PAGE — extends home.css
+   ========================================================= */
+
+/* ---- lab intro (mirrors .intro, no buttons) ---- */
+.home .lab-intro{
+  text-align: center;
+  padding: 56px 0 60px;
+}
+.home .lab-intro .hi{
+  font-size: 1.9rem;
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+.home .lab-intro h1{
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--blue);
+  font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+  line-height: 1.3;
+  max-width: 920px;
+  margin: 0 auto;
+}
+.home .lab-intro h1 em{
+  font-style: italic;
+  color: var(--coral);
+}
+
+/* ---- alternating project bands ---- */
+.home .project-band{
+  position: relative;
+  padding: 70px 0 60px;
+  overflow: hidden;
+}
+.home .project-band.peach{
+  background-image: url('assets/textures/checkered-peach.png');
+  background-repeat: repeat;
+  background-size: 110px 110px;
+}
+.home .project-band.blue{
+  background-image: url('assets/textures/checkered-blue.png');
+  background-repeat: repeat;
+  background-size: 90px 90px;
+}
+
+/* ---- the paper card ---- */
+.home .project-card{
+  position: relative;
+  background-image: url('assets/textures/paper.jpg');
+  background-size: 500px;
+  border-radius: 16px;
+  padding: 40px 44px 44px 300px;
+  box-shadow: 0 10px 26px rgba(122,105,99,0.14);
+}
+.home .project-band.blue .project-card{
+  padding: 40px 340px 44px 44px;
+}
+
+.home .paperclip{
+  position: absolute;
+  top: -50px;
+  width: 118px;
+  height: auto;
+  z-index: 2;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.18));
+}
+.home .paperclip.clip-left{ left: 70px; }
+.home .paperclip.clip-right{ right: 70px; }
+
+.home .badge{
+  display: inline-block;
+  background: var(--coral);
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 9px 22px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
+.home .proj-title{
+  font-family: var(--font-script);
+  font-weight: 700;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 1.7rem;
+  margin: 0 0 14px;
+  line-height: 1.25;
+}
+
+.home .proj-desc{
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 1.02rem;
+  margin: 0 0 12px;
+  max-width: 90ch;
+}
+
+.home .proj-list{
+  margin: 0 0 20px;
+  padding-left: 0;
+}
+.home .proj-list li{
+  position: relative;
+  list-style: none;
+  padding-left: 22px;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 1.02rem;
+  margin-bottom: 6px;
+}
+.home .proj-list li::before{
+  content: "•";
+  position: absolute;
+  left: 4px;
+  color: var(--ink);
+}
+
+.home .proj-chips{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 26px;
+}
+.home .chip{
+  display: inline-flex;
+  align-items: center;
+  background: var(--peach-fill);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 10px 22px;
+  border-radius: 999px;
+}
+.home .chip-primary{
+  background: var(--blue-btn);
+  color: #fff;
+}
+
+/* ---- spec table (Problem / Approach / Result) ---- */
+.home .spec-table{
+  border: 3px dashed var(--blue);
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.35);
+}
+.home .spec-row{
+  display: grid;
+  grid-template-columns: 220px 1fr;
+}
+.home .spec-row + .spec-row{
+  border-top: 3px dashed var(--blue);
+}
+.home .spec-label{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 700;
+  color: var(--ink);
+  padding: 22px 16px;
+  border-right: 3px dashed var(--blue);
+}
+.home .spec-value{
+  display: flex;
+  align-items: center;
+  color: var(--ink);
+  font-weight: 600;
+  text-align: center;
+  padding: 22px 26px;
+  line-height: 1.5;
+}
+
+/* ---- pinned screenshot photo (sits in the reserved image column) ---- */
+.home .proj-photo-pin{
+  position: absolute;
+  top: 130px;
+  width: 280px;
+  padding: 10px 10px 34px;
+  background: var(--white);
+  border-radius: 4px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.22);
+  transform: rotate(-6deg);
+  cursor: pointer;
+  border: none;
+  font: inherit;
+  z-index: 1;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.home .project-band.blue .proj-photo-pin{ right: 44px; transform: rotate(5deg); }
+.home .project-band.peach .proj-photo-pin{ left: 44px; transform: rotate(-6deg); }
+.home .proj-photo-pin:hover,
+.home .proj-photo-pin:focus-visible{
+  transform: rotate(0deg) scale(1.04);
+  box-shadow: 0 18px 30px rgba(0,0,0,0.28);
+  outline: none;
+}
+.home .proj-photo-pin img{
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+  display: block;
+}
+.home .proj-photo-hint{
+  position: absolute;
+  left: 0; right: 0; bottom: 8px;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--ink);
+  opacity: 0.8;
+}
+
+/* =========================================================
+   PROJECT SCREENSHOT LIGHTBOX
+   ========================================================= */
+.proj-lightbox{
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.proj-lightbox.open{ display: flex; }
+.proj-lightbox-backdrop{
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 26, 24, 0.78);
+}
+.proj-lightbox-inner{
+  position: relative;
+  z-index: 1;
+  width: min(92vw, 1080px);
+  max-height: 88vh;
+  background: var(--page-bg);
+  border-radius: 18px;
+  padding: 26px 22px 22px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  animation: proj-lightbox-pop 0.2s ease;
+}
+@keyframes proj-lightbox-pop{
+  from{ opacity: 0; transform: scale(0.96); }
+  to{ opacity: 1; transform: scale(1); }
+}
+.proj-lightbox-close{
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: var(--coral);
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
+.proj-lightbox-close:hover{ filter: brightness(1.05); }
+.proj-lightbox-scroller{
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 8px;
+}
+.proj-lightbox-slide{
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.proj-lightbox-slide img{
+  max-height: 62vh;
+  max-width: min(80vw, 720px);
+  width: auto;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.2);
+}
+.proj-lightbox-slide figcaption{
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--ink);
+  text-align: center;
+  font-size: 0.95rem;
+  max-width: 60ch;
+}
+.proj-lightbox-footer{
+  display: flex;
+  justify-content: center;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 720px){
+  .home .project-card{ padding: 70px 22px 30px !important; }
+  .home .spec-row{ grid-template-columns: 1fr; }
+  .home .spec-label{
+    border-right: none;
+    border-bottom: 3px dashed var(--blue);
+    padding: 14px;
+  }
+  .home .spec-value{ padding: 16px 20px; text-align: left; }
+  .home .paperclip{ width: 56px; top: -32px; }
+  .home .paperclip.clip-left{ left: 18px; }
+  .home .paperclip.clip-right{ right: 18px; }
+  .home .proj-title{ font-size: 1.35rem; }
+
+  .home .proj-photo-pin{
+    position: relative;
+    top: auto; left: auto; right: auto;
+    width: 200px;
+    margin: 0 auto 18px;
+    display: block;
+    transform: rotate(-4deg);
+  }
+
+  .proj-lightbox-inner{ width: 96vw; padding: 44px 14px 18px; }
+  .proj-lightbox-slide img{ max-height: 50vh; max-width: 84vw; }
+  .proj-lightbox-close{ top: -10px; right: 6px; }
+}
