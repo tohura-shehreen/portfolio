@@ -202,11 +202,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const scroller = document.getElementById('projLightboxScroller');
     const liveBtn = document.getElementById('projLightboxLive');
     const githubBtn = document.getElementById('projLightboxGithub');
+    const figmaBtn = document.getElementById('projLightboxFigma');
     const pins = document.querySelectorAll('.proj-photo-pin');
     let lastFocused = null;
 
     function openLightbox(pin) {
-      const pairs = (pin.dataset.images || '').split(',').filter(Boolean);
+      const pairs = (pin.dataset.images || '').split(';').filter(Boolean);
       scroller.innerHTML = pairs.map((pair) => {
         const [src, caption] = pair.split('|');
         return `
@@ -230,6 +231,14 @@ document.addEventListener('DOMContentLoaded', () => {
         githubBtn.style.display = '';
       } else {
         githubBtn.style.display = 'none';
+      }
+
+      const figmaUrl = pin.dataset.figma;
+      if (figmaUrl) {
+        figmaBtn.href = figmaUrl;
+        figmaBtn.style.display = '';
+      } else {
+        figmaBtn.style.display = 'none';
       }
 
       lastFocused = document.activeElement;

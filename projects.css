@@ -190,11 +190,14 @@
   z-index: 1;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+.home .proj-photo-pin.pin-mobile{
+  width: 190px;
+}
 .home .project-band.blue .proj-photo-pin{ right: 40px; transform: rotate(5deg); }
 .home .project-band.peach .proj-photo-pin{ left: 40px; transform: rotate(-6deg); }
 .home .proj-photo-pin:hover,
 .home .proj-photo-pin:focus-visible{
-  transform: rotate(0deg) scale(1.04);
+  transform: rotate(0deg) scale(1.04) !important;
   box-shadow: 0 18px 30px rgba(0,0,0,0.28);
   outline: none;
 }
@@ -235,7 +238,9 @@
 .proj-lightbox-inner{
   position: relative;
   z-index: 1;
-  width: min(92vw, 1080px);
+  width: fit-content;
+  max-width: min(92vw, 1080px);
+  min-width: 0;
   max-height: 88vh;
   background: var(--page-bg);
   border-radius: 18px;
@@ -243,6 +248,7 @@
   box-shadow: 0 20px 60px rgba(0,0,0,0.4);
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 18px;
   animation: proj-lightbox-pop 0.2s ease;
 }
@@ -273,6 +279,13 @@
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   padding-bottom: 8px;
+  max-width: 100%;
+  min-width: 0;
+  scrollbar-width: none;      /* Firefox */
+  -ms-overflow-style: none;   /* old Edge/IE */
+}
+.proj-lightbox-scroller::-webkit-scrollbar{
+  display: none;              /* Chrome, Safari, new Edge */
 }
 .proj-lightbox-slide{
   flex: 0 0 auto;
@@ -325,6 +338,15 @@
 .home .project-card.force-img-right .proj-photo-pin:focus-visible{
   transform: rotate(0deg) scale(1.04) !important;
 }
+.home .project-card.force-text-right .proj-photo-pin{
+  right: auto !important;
+  left: 40px !important;
+  transform: rotate(-6deg) !important;
+}
+.home .project-card.force-text-right .proj-photo-pin:hover,
+.home .project-card.force-text-right .proj-photo-pin:focus-visible{
+  transform: rotate(0deg) scale(1.04) !important;
+}
 
 /* =========================================================
    RESPONSIVE
@@ -352,7 +374,7 @@
     transform: rotate(-4deg);
   }
 
-  .proj-lightbox-inner{ width: 96vw; padding: 44px 14px 18px; }
+  .proj-lightbox-inner{ max-width: 96vw; padding: 44px 14px 18px; }
   .proj-lightbox-slide img{ max-height: 50vh; max-width: 84vw; }
   .proj-lightbox-close{ top: -10px; right: 6px; }
 }
