@@ -79,6 +79,19 @@
   margin-bottom: 14px;
 }
 
+.home .badge-row{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.home .badge-row .badge{ margin-bottom: 0; }
+.home .badge.badge-type{
+  background: var(--peach-fill);
+  color: var(--ink);
+}
+
 .home .proj-title{
   font-family: var(--font-script);
   font-weight: 700;
